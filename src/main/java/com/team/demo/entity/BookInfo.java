@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class BookInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private long id;
 
     private String name;
 
@@ -29,11 +29,17 @@ public class BookInfo {
 
     private CategoryInfo category;
 
-    public String getId(){
+    private int amount;
+
+    public int getAmount(){return amount;}
+
+    public void setAmount(int amount){this.amount = amount;}
+
+    public long getId(){
         return id;
     }
 
-    public void setId(String id){
+    public void setId(long id){
         this.id=id;
     }
 

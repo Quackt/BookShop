@@ -1,7 +1,6 @@
 package com.team.demo.repository;
 
-
-import com.team.demo.entity.UserInfo;
+import com.team.demo.entity.OrderInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +10,6 @@ import org.springframework.stereotype.Repository;
  * @date 2020/02/24
  */
 @Repository
-public interface UserInfoRepository extends JpaRepository<UserInfo,Long>{
+public interface OrderInfoRepository extends JpaRepository<OrderInfo,Long> {
 
 }

@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private long id;
 
     private String username;
 
@@ -25,11 +25,11 @@ public class UserInfo {
 
     private String email;
 
-    public String getId(){
+    public long getId(){
         return id;
     }
 
-    public void setId(String id){
+    public void setId(long id){
         this.id=id;
     }
 
