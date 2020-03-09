@@ -19,17 +19,34 @@ public class BookInfoService {
     @Autowired
     BookInfoRepository bookInfoRepository;
 
-    public Long addBook() {
+    /**
+     * 添加一本书
+     * @return Long
+     */
+    public Long addBook(BookInfoVO bookInfoVO) {
         return 0L;
     }
 
+    /**
+     * 删除一本书
+     * @param ids 书籍id
+     */
     public void deleteBooks(List<Long> ids) {
     }
 
+    /**
+     * 按条件查询书本信息
+     * @param bookInfos 书籍信息
+     * @return list
+     */
     public List<BookInfo> queryBooks(List<BookInfoVO> bookInfos) {
         return null;
     }
 
+    /**
+     * 查询所有书籍信息
+     * @return list
+     */
     public List<BookInfo> getAllBooks() {
         return null;
     }
