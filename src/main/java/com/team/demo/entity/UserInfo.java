@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private long userId;
 
     private String username;
 
@@ -25,12 +25,25 @@ public class UserInfo {
 
     private String email;
 
+    //无参构造
+    public UserInfo(){
+
+    }
+    //有参构造
+    public UserInfo(long userId,String username,double password,String cellphone,String email){
+        this.userId=userId;
+        this.username=username;
+        this.password=password;
+        this.cellphone=cellphone;
+        this.email=email;
+    }
+
     public long getId(){
-        return id;
+        return userId;
     }
 
     public void setId(long id){
-        this.id=id;
+        this.userId=id;
     }
 
     public String getUsername(){

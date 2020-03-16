@@ -15,24 +15,40 @@ import java.util.Set;
 public class OrderInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private long orderId;
 
     private Date ordertime;
 
     private boolean status;
 
-    private double price;
+    private BookInfo book;
+
+    private double totalprice;
 
     private UserInfo user;
 
-    private Set<OrderItem> orderitems=new HashSet<OrderItem>();
+    //private Set<OrderItem> orderitems=new HashSet<OrderItem>();
 
-    public String getId(){
-        return id;
+    //无参构造
+    public OrderInfo(){
+
+    }
+    //有参构造
+    public OrderInfo(long orderId,Date ordertime,boolean status,BookInfo book,double totalprice,UserInfo user){
+        this.orderId=orderId;
+        this.ordertime=ordertime;
+        this.status=status;
+        this.book=book;
+        this.totalprice=totalprice;
+        this.user=user;
     }
 
-    public void setId(String id){
-        this.id=id;
+    public long getId(){
+        return orderId;
+    }
+
+    public void setId(long orderId){
+        this.orderId=orderId;
     }
 
     public Date getOrdertime(){
@@ -51,12 +67,20 @@ public class OrderInfo {
         this.status=status;
     }
 
+    public BookInfo getBook(){
+        return book;
+    }
+
+    public void setBook(BookInfo book){
+        this.book=book;
+    }
+
     public double getPrice(){
-        return price;
+        return totalprice;
     }
 
     public void setPrice(double price){
-        this.price=price;
+        this.totalprice=price;
     }
 
     public UserInfo getUser(){
@@ -67,11 +91,11 @@ public class OrderInfo {
         this.user=user;
     }
 
-    public Set<OrderItem> getOrderitems(){
+    /*public Set<OrderItem> getOrderitems(){
         return orderitems;
     }
 
     public void setOrderitems(Set<OrderItem> orderitems){
         this.orderitems=orderitems;
-    }
+    }*/
 }
