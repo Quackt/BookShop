@@ -1,8 +1,12 @@
 package com.team.demo.service;
 
+import com.team.demo.entity.UserInfo;
 import com.team.demo.repository.UserInfoRepository;
+import com.team.demo.vo.UserInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @program bookshop
@@ -14,4 +18,44 @@ import org.springframework.stereotype.Service;
 public class UserInfoService {
     @Autowired
     UserInfoRepository userInfoRepository;
+
+    /**
+     * 添加一个用户
+     * @param userInfoVO 用户信息
+     * @return Long 用户id
+     */
+    public Long addUser(UserInfoVO userInfoVO) {
+        return 0L;
+    }
+
+    /**
+     * 更新用户信息
+     * @param userInfoVO 用户信息
+     */
+    public void updateMessage(UserInfoVO userInfoVO) {
+    }
+
+    /**
+     * 删除用户
+     * @param ids 用户id
+     */
+    public void deleteUsers(List<Long> ids) {
+    }
+
+    /**
+     * 查询用户信息
+     * @param userInfos 查询条件
+     * @return List 用户信息表
+     */
+    public List<UserInfo> queryUsers(List<UserInfoVO> userInfos) {
+        return null;
+    }
+
+    /**
+     * 返回所有用户
+     * @return List 用户信息表
+     */
+    public List<UserInfo> getAllUsers() {
+        return null;
+    }
 }

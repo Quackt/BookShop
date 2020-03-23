@@ -54,7 +54,7 @@ public class BookInfoController {
     }
 
     @GetMapping("/getAllBooks")
-    public List<BookInfo> getAllOrders(){
+    public List<BookInfo> getAllBooks(){
         return bookInfoService.getAllBooks();
     }
 }

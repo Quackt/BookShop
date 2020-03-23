@@ -25,20 +25,20 @@ public class OrderInfo {
 
     private double totalprice;
 
-    private UserInfo user;
+    private long userId;
 
     //无参构造
     public OrderInfo(){
 
     }
     //有参构造
-    public OrderInfo(long orderId,Date ordertime,boolean status,BookInfo book,double totalprice,UserInfo user){
+    public OrderInfo(long orderId,Date ordertime,boolean status,BookInfo book,double totalprice,long userId){
         this.orderId=orderId;
         this.ordertime=ordertime;
         this.status=status;
         this.book=book;
         this.totalprice=totalprice;
-        this.user=user;
+        this.userId=userId;
     }
 
     public long getId(){
@@ -81,12 +81,12 @@ public class OrderInfo {
         this.totalprice=price;
     }
 
-    public UserInfo getUser(){
-        return user;
+    public long getUserId(){
+        return userId;
     }
 
-    public void setUser(UserInfo user){
-        this.user=user;
+    public void setUser(long userId){
+        this.userId=userId;
     }
 
     /*public Set<OrderItem> getOrderitems(){

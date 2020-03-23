@@ -19,7 +19,7 @@ public class UserInfo {
 
     private String username;
 
-    private double password;
+    private String password;
 
     private String cellphone;
 
@@ -30,7 +30,7 @@ public class UserInfo {
 
     }
     //有参构造
-    public UserInfo(long userId,String username,double password,String cellphone,String email){
+    public UserInfo(long userId,String username,String password,String cellphone,String email){
         this.userId=userId;
         this.username=username;
         this.password=password;
@@ -54,11 +54,11 @@ public class UserInfo {
         this.username=username;
     }
 
-    public double getPassword(){
+    public String getPassword(){
         return password;
     }
 
-    public void setPassword(double password){
+    public void setPassword(String password){
         this.password=password;
     }
 
