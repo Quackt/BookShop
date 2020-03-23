@@ -32,12 +32,17 @@ public class OrderInfoController {
     }
 
     @PostMapping("/queryOrders")
-    public List<OrderInfo> queryOrders(List<Long> ids){
+    public List<OrderInfo> queryOrders(@RequestBody List<Long> ids){
         return orderInfoService.queryOrders(ids);
     }
 
     @GetMapping("/getAllOrders")
     public List<OrderInfo> getAllOrders(){
         return orderInfoService.getAllOrders();
+    }
+
+    @DeleteMapping("/delete")
+    public void deleteOrders(@RequestParam List<Long> ids){
+        orderInfoService.deleteOrders(ids);
     }
 }

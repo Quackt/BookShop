@@ -50,4 +50,28 @@ public class BookInfoService {
     public List<BookInfo> getAllBooks() {
         return null;
     }
+
+    /**
+     * 上传书的文件
+     * @return list
+     */
+    public void uploadfile() {
+    }
+
+    /**
+     * 更新书的信息
+     * @param bookInfoVO 书籍信息
+     */
+    public void updateMessage(BookInfoVO bookInfoVO) {
+    }
+
+    /**
+     * 返回下载链接
+     * @param bookInfoVO 书籍信息
+     * @return string
+     */
+    public String getDownloadUrl(BookInfoVO bookInfoVO) {
+        String url = "";
+        return url;
+    }
 }

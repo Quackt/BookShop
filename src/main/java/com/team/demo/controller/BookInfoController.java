@@ -25,7 +25,22 @@ public class BookInfoController {
 
     @PostMapping("/addBook")
     public Long addBook(@RequestBody BookInfoVO bookInfoVO){
-        return bookInfoService.addBook();
+        return bookInfoService.addBook(bookInfoVO);
+    }
+
+    @PostMapping("/uploadfile")
+    public void uploadfile(@RequestParam String url){
+        bookInfoService.uploadfile();
+    }
+
+    @PostMapping("/update")
+    public void updateMassege(@RequestBody BookInfoVO bookInfoVO){
+        bookInfoService.updateMessage(bookInfoVO);
+    }
+
+    @GetMapping("/download")
+    public String getDownloadUrl(@RequestParam BookInfoVO bookInfoVO){
+        return bookInfoService.getDownloadUrl(bookInfoVO);
     }
 
     @DeleteMapping("/delete")
@@ -34,7 +49,7 @@ public class BookInfoController {
     }
 
     @PostMapping("/queryBooks")
-    public List<BookInfo> queryBooks(List<BookInfoVO> bookInfos){
+    public List<BookInfo> queryBooks(@RequestParam List<BookInfoVO> bookInfos){
         return bookInfoService.queryBooks(bookInfos);
     }
 

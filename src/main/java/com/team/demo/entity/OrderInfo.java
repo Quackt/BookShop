@@ -27,8 +27,6 @@ public class OrderInfo {
 
     private UserInfo user;
 
-    //private Set<OrderItem> orderitems=new HashSet<OrderItem>();
-
     //无参构造
     public OrderInfo(){
 

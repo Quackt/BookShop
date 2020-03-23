@@ -50,4 +50,11 @@ public class OrderInfoService {
     public List<OrderInfo> getAllOrders() {
         return null;
     }
+
+    /**
+     * 删除指定数据订单信息
+     * @param ids 目标id
+     */
+    public void deleteOrders(List<Long> ids) {
+    }
 }
