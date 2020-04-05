@@ -9,7 +9,6 @@ import cn.hutool.core.util.RandomUtil;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.security.SecureRandom;
 
 /**
@@ -21,14 +20,14 @@ import java.security.SecureRandom;
 
 @Service
 @Lazy(false)
-public class IdGenerator {
+public class IdGeneratorUtils {
     private long workerId = 0;
     private static SecureRandom random = new SecureRandom();
 
     /**
      * 生成18位有顺序数字id
      * */
-    private static SnowFlake idWorker = new SnowFlake(0, 0);
+    private static SnowFlakeUtils idWorker = new SnowFlakeUtils(0, 0);
     public static String getLongNextId() {
         String id = String.valueOf(idWorker.nextId());
         //System.out.println(id);
@@ -91,14 +90,8 @@ public class IdGenerator {
      *
      * @return
      */
-    public String objectId() {
+    public static String objectId() {
         return ObjectId.next();
     }
 
-
-    public static void main(String[] args) {
-        System.out.println(IdGenerator.getLongNextId());
-        System.out.println(IdGenerator.getLongNextId().length());
-
-    }
 }

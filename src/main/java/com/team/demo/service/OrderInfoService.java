@@ -1,7 +1,10 @@
 package com.team.demo.service;
 
+import cn.hutool.db.sql.Order;
+import com.team.demo.entity.BookInfo;
 import com.team.demo.entity.OrderInfo;
 import com.team.demo.repository.OrderInfoRepository;
+import com.team.demo.vo.OrderInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +25,13 @@ public class OrderInfoService {
      * 创建订单并储存
      * @return Long
      */
-    public Long createOrder() {
-        Long itemId = 0L;
-        return itemId;
+    public Long createOrder(OrderInfoVO orderInfoVO) {
+        OrderInfo anorder=new OrderInfo();
+        anorder.setId(orderInfoVO.getId());
+        anorder.setBook((BookInfo) orderInfoVO.getRequiredBooks());
+        anorder.setUser(orderInfoVO.getUserId());
+        anorder.setOrdertime(orderInfoVO.getDate());
+        return anorder.getId();
     }
 
     /**

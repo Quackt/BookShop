@@ -3,9 +3,12 @@ package com.team.demo.service;
 import com.team.demo.entity.BookInfo;
 import com.team.demo.repository.BookInfoRepository;
 import com.team.demo.vo.BookInfoVO;
+import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.print.MultiDoc;
+import java.awt.print.Book;
 import java.util.List;
 
 /**
@@ -24,7 +27,14 @@ public class BookInfoService {
      * @return Long
      */
     public Long addBook(BookInfoVO bookInfoVO) {
-        return 0L;
+        //List<BookInfo> oneList= Lists.newArrayList();
+        BookInfo abook=new BookInfo();
+        abook.setId(bookInfoVO.getId());
+        abook.setName(bookInfoVO.getName());
+        abook.setCategory(bookInfoVO.getCategory());
+        abook.setAuthor(bookInfoVO.getAuthor());
+        //oneList.add(abook);
+        return abook.getId();
     }
 
     /**

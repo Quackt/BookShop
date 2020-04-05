@@ -24,8 +24,15 @@ public class UserInfoService {
      * @param userInfoVO 用户信息
      * @return Long 用户id
      */
-    public Long addUser(UserInfoVO userInfoVO) {
-        return 0L;
+    public long addUser(UserInfoVO userInfoVO)
+    {
+        UserInfo auser=new UserInfo();
+        auser.setId(userInfoVO.getUserId());
+        auser.setUsername(userInfoVO.getUsername());
+        auser.setPassword(userInfoVO.getPassword());
+        auser.setCellphone(userInfoVO.getCellphone());
+        auser.setEmail(userInfoVO.getEmail());
+        return auser.getId();
     }
 
     /**

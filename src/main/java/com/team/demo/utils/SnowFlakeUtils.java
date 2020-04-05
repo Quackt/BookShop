@@ -18,8 +18,7 @@ package com.team.demo.utils;
  * @description Id生成策略-Snowflake算法
  * @date 2020/03/20
  */
-public class SnowFlake {
-    // ==============================Fields==================
+public class SnowFlakeUtils {
     /** 开始时间截 (2018-01-01) */
     private final long twepoch = 1514736000000L;
 
@@ -62,13 +61,12 @@ public class SnowFlake {
     /** 上次生成ID的时间截 */
     private long lastTimestamp = -1L;
 
-    //==============================Constructors====================
     /**
      * 构造函数
      * @param workerId 工作ID (0~31)
      * @param datacenterId 数据中心ID (0~31)
      */
-    public SnowFlake(long workerId, long datacenterId) {
+    public SnowFlakeUtils(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
             throw new IllegalArgumentException(String.format("worker Id can't be greater than %d or less than 0", maxWorkerId));
         }
@@ -79,9 +77,8 @@ public class SnowFlake {
         this.datacenterId = datacenterId;
     }
 
-    // ==============================Methods=================================
     /**
-     * 获得下一个ID (该方法是线程安全的)
+     * 获得下一个ID
      * @return SnowflakeId
      */
     public synchronized long nextId() {
@@ -134,18 +131,8 @@ public class SnowFlake {
      * 返回以毫秒为单位的当前时间
      * @return 当前时间(毫秒)
      */
-    protected long timeGen() {
+    protected static long timeGen() {
         return System.currentTimeMillis();
     }
 
-    //==============================Test=============================================
-    /** 测试 */
-    public static void main(String[] args) {
-        SnowFlake idWorker = new SnowFlake(0, 0);
-        for (int i = 0; i < 1000; i++) {
-            long id = idWorker.nextId();
-            System.out.println(Long.toBinaryString(id));
-            System.out.println(id);
-        }
-    }
 }
