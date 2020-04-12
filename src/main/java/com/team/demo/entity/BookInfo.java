@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class BookInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long bookId;
+    private long id;
 
     private String name;
 
@@ -35,8 +35,8 @@ public class BookInfo {
 
     }
     //有参构造
-    public BookInfo(long bookId,String name,String category,double price,String author,String image,String description,int amount){
-        this.bookId=bookId;
+    public BookInfo(long id,String name,String category,double price,String author,String image,String description,int amount){
+        this.id=id;
         this.name=name;
         this.category=category;
         this.price=price;
@@ -56,11 +56,11 @@ public class BookInfo {
     }
 
     public long getId(){
-        return bookId;
+        return id;
     }
 
     public void setId(long id){
-        this.bookId=bookId;
+        this.id=id;
     }
 
     public String getName(){

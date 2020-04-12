@@ -23,7 +23,7 @@ public class OrderInfoController {
 
     @PostMapping("/newOrder")
     public Long createOrder(@RequestBody OrderInfoVO orderInfoVO){
-        return orderInfoService.createOrder();
+        return orderInfoService.createOrder(orderInfoVO);
     }
 
     @PostMapping("/cancle")

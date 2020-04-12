@@ -27,14 +27,14 @@ public class BookInfoService {
      * @return Long
      */
     public Long addBook(BookInfoVO bookInfoVO) {
-        //List<BookInfo> oneList= Lists.newArrayList();
-        BookInfo abook=new BookInfo();
-        abook.setId(bookInfoVO.getId());
-        abook.setName(bookInfoVO.getName());
-        abook.setCategory(bookInfoVO.getCategory());
-        abook.setAuthor(bookInfoVO.getAuthor());
-        //oneList.add(abook);
-        return abook.getId();
+        BookInfo bookInfo=new BookInfo();
+        //bookInfo.setId(bookInfoVO.getId());改成用你之前写的类来生成id
+
+        bookInfo.setName(bookInfoVO.getName());
+        bookInfo.setCategory(bookInfoVO.getCategory());
+        bookInfo.setAuthor(bookInfoVO.getAuthor());
+        bookInfoRepository.save(bookInfo);
+        return bookInfo.getId();
     }
 
     /**
@@ -42,37 +42,42 @@ public class BookInfoService {
      * @param ids 书籍id
      */
     public void deleteBooks(List<Long> ids) {
+        bookInfoRepository.deleteByIds(ids);
     }
 
     /**
      * 按条件查询书本信息
-     * @param bookInfos 书籍信息
+     * @param bookInfoVO 书籍信息
      * @return list
      */
-    public List<BookInfo> queryBooks(List<BookInfoVO> bookInfos) {
-        return null;
+    public List<BookInfo> queryBooks(BookInfoVO bookInfoVO) {
+        if(bookInfoVO.getId()!=0) {
+            return bookInfoRepository.findById(bookInfoVO.getId());
+        }else if(!bookInfoVO.getAuthor().equals("")){
+            return bookInfoRepository.findByAuthor(bookInfoVO.getAuthor());
+        }else if(!bookInfoVO.getCategory().equals("")){
+            return bookInfoRepository.findByCategory(bookInfoVO.getCategory());
+        }else if(!bookInfoVO.getName().equals("")){
+            return bookInfoRepository.findByName(bookInfoVO.getName());
+        }else{
+            return bookInfoRepository.findByKeyword(bookInfoVO.getKeyword());
+        }
     }
+
 
     /**
      * 查询所有书籍信息
      * @return list
      */
     public List<BookInfo> getAllBooks() {
-        return null;
+        return bookInfoRepository.findAll();
     }
-
-    /**
-     * 上传书的文件
-     * @return list
-     */
-    public void uploadfile() {
-    }
-
     /**
      * 更新书的信息
-     * @param bookInfoVO 书籍信息
+     * @param bookInfo 书籍信息
      */
-    public void updateMessage(BookInfoVO bookInfoVO) {
+    public void updateMessage(BookInfo bookInfo) {
+        bookInfoRepository.saveAndFlush(bookInfo);
     }
 
     /**
@@ -84,4 +89,12 @@ public class BookInfoService {
         String url = "";
         return url;
     }
+
+    /**
+     * 上传书的文件
+     * @return list
+     */
+    public void uploadfile() {
+    }
+
 }

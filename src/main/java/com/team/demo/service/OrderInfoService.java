@@ -26,12 +26,12 @@ public class OrderInfoService {
      * @return Long
      */
     public Long createOrder(OrderInfoVO orderInfoVO) {
-        OrderInfo anorder=new OrderInfo();
-        anorder.setId(orderInfoVO.getId());
-        anorder.setBook((BookInfo) orderInfoVO.getRequiredBooks());
-        anorder.setUser(orderInfoVO.getUserId());
-        anorder.setOrdertime(orderInfoVO.getDate());
-        return anorder.getId();
+        OrderInfo orderInfo=new OrderInfo();
+        //orderInfo.setId(orderInfoVO.getId());
+        orderInfo.setBook((BookInfo) orderInfoVO.getRequiredBooks());
+        orderInfo.setUser(orderInfoVO.getUserId());
+        orderInfoRepository.save(orderInfo);
+        return orderInfo.getId();
     }
 
     /**
@@ -39,6 +39,7 @@ public class OrderInfoService {
      * @param orderId 目标订单Id
      */
     public void cancleOrder(long orderId) {
+        orderInfoRepository.updateStatusById(orderId,OrderInfo.Status.CANCLED);
     }
 
     /**
@@ -47,7 +48,7 @@ public class OrderInfoService {
      * @return List 订单信息集合
      */
     public List<OrderInfo> queryOrders(List<Long> ids) {
-        return null;
+        return orderInfoRepository.findByIds(ids);
     }
 
     /**
@@ -55,7 +56,7 @@ public class OrderInfoService {
      * @return List 订单信息集合
      */
     public List<OrderInfo> getAllOrders() {
-        return null;
+        return orderInfoRepository.findAll();
     }
 
     /**
@@ -63,5 +64,6 @@ public class OrderInfoService {
      * @param ids 目标id
      */
     public void deleteOrders(List<Long> ids) {
+        orderInfoRepository.deleteByIds(ids);
     }
 }

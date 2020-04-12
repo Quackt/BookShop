@@ -1,8 +1,7 @@
 package com.team.demo.entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,18 +12,26 @@ import java.util.Set;
  * @date 2020/03/5
  */
 public class OrderInfo {
+
+    public static enum Status {FINISHED,CANCLED,UNFINISHED};
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderId;
+    private long id;
 
-    private Date ordertime;
+    @Column
+    private String ordertime;
 
-    private boolean status;
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
+    @Column
     private BookInfo book;
 
+    @Column
     private double totalprice;
 
+    @Column
     private long userId;
 
     //无参构造
@@ -32,36 +39,37 @@ public class OrderInfo {
 
     }
     //有参构造
-    public OrderInfo(long orderId,Date ordertime,boolean status,BookInfo book,double totalprice,long userId){
-        this.orderId=orderId;
-        this.ordertime=ordertime;
-        this.status=status;
+    public OrderInfo(long id,BookInfo book,double totalprice,long userId){
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        this.id=id;
+        this.ordertime=df.format(new Date());
+        this.status=Status.UNFINISHED;
         this.book=book;
         this.totalprice=totalprice;
         this.userId=userId;
     }
 
     public long getId(){
-        return orderId;
+        return id;
     }
 
-    public void setId(long orderId){
-        this.orderId=orderId;
+    public void setId(long id){
+        this.id=id;
     }
 
-    public Date getOrdertime(){
+    public String getOrdertime(){
         return ordertime;
     }
 
-    public void setOrdertime(Date ordertime){
+    public void setOrdertime(String ordertime){
         this.ordertime=ordertime;
     }
 
-    public boolean isStatus(){
+    public Status getStatus(){
         return status;
     }
 
-    public void setStatus(boolean status){
+    public void setStatus(Status status){
         this.status=status;
     }
 
@@ -97,3 +105,5 @@ public class OrderInfo {
         this.orderitems=orderitems;
     }*/
 }
+
+

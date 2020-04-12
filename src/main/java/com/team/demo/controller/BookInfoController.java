@@ -34,8 +34,8 @@ public class BookInfoController {
     }
 
     @PostMapping("/update")
-    public void updateMassege(@RequestBody BookInfoVO bookInfoVO){
-        bookInfoService.updateMessage(bookInfoVO);
+    public void updateMassege(@RequestBody BookInfo bookInfo){
+        bookInfoService.updateMessage(bookInfo);
     }
 
     @GetMapping("/download")
@@ -49,8 +49,8 @@ public class BookInfoController {
     }
 
     @PostMapping("/queryBooks")
-    public List<BookInfo> queryBooks(@RequestParam List<BookInfoVO> bookInfos){
-        return bookInfoService.queryBooks(bookInfos);
+    public List<BookInfo> queryBooks(@RequestParam BookInfoVO bookInfoVO){
+        return bookInfoService.queryBooks(bookInfoVO);
     }
 
     @GetMapping("/getAllBooks")
