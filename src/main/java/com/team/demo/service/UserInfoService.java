@@ -65,4 +65,10 @@ public class UserInfoService {
     public List<UserInfo> getAllUsers() {
         return null;
     }
+
+    /**
+     * 判断是否登录成功
+     * @return boolean 是否成功
+     */
+    public boolean login(String password, String account) {return false;}
 }

@@ -24,7 +24,7 @@ public class UserInfoController {
 
 
     @PostMapping("/addUser")
-    public Long addBook(@RequestBody UserInfoVO userInfoVO){
+    public Long addUser(@RequestBody UserInfoVO userInfoVO){
         return userInfoService.addUser(userInfoVO);
     }
 
@@ -34,7 +34,7 @@ public class UserInfoController {
     }
 
     @DeleteMapping("/delete")
-    public void deleteBooks(@RequestBody List<Long> ids){
+    public void deleteUsers(@RequestBody List<Long> ids){
         userInfoService.deleteUsers(ids);
     }
 
@@ -47,4 +47,7 @@ public class UserInfoController {
     public List<UserInfo> getAllUsers(){
         return userInfoService.getAllUsers();
     }
+
+    @PostMapping("/login")
+    public boolean login(@RequestBody String password,@RequestParam("account")String account){return userInfoService.login(password,account);}
 }
