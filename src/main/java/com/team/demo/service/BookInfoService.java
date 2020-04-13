@@ -2,13 +2,11 @@ package com.team.demo.service;
 
 import com.team.demo.entity.BookInfo;
 import com.team.demo.repository.BookInfoRepository;
+import com.team.demo.utils.IdGeneratorUtils;
 import com.team.demo.vo.BookInfoVO;
-import org.assertj.core.util.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.print.MultiDoc;
-import java.awt.print.Book;
 import java.util.List;
 
 /**
@@ -21,6 +19,7 @@ import java.util.List;
 public class BookInfoService {
     @Autowired
     BookInfoRepository bookInfoRepository;
+    private IdGeneratorUtils idGenerator;
 
     /**
      * 添加一本书
@@ -28,7 +27,7 @@ public class BookInfoService {
      */
     public Long addBook(BookInfoVO bookInfoVO) {
         BookInfo bookInfo=new BookInfo();
-        //bookInfo.setId(bookInfoVO.getId());改成用你之前写的类来生成id
+        bookInfo.setId(idGenerator.snowflakeId());
 
         bookInfo.setName(bookInfoVO.getName());
         bookInfo.setCategory(bookInfoVO.getCategory());
