@@ -81,9 +81,10 @@ public class UserInfoService {
      */
     public boolean login(String password, Long account) {
         //这里的account我按userId写的，还是说实体类里要添账号这一项？
-        if(!userInfoRepository.findById(account).isPresent())
+        if(!userInfoRepository.findById(account).isPresent()) {
             return false;
-        else
+        } else {
             return password.equals(userInfoRepository.getOne(account).getPassword());
+        }
     }
 }
