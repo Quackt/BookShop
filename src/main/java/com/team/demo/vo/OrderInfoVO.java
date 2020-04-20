@@ -17,11 +17,11 @@ public class OrderInfoVO {
 
     private long id;
 
-    private List<Map<Long,Integer>> requiredBooks;
+    private Map<Long,Integer> requiredBooks;
 
     public OrderInfoVO(){}
 
-    public OrderInfoVO(long userId,List<Map<Long,Integer>> requiredBooks,long id,Date date){
+    public OrderInfoVO(long userId,Map<Long,Integer> requiredBooks,long id,Date date){
         this.userId = userId;
         this.requiredBooks = getRequiredBooks();
         this.id=id;
@@ -44,11 +44,11 @@ public class OrderInfoVO {
         this.userId = userId;
     }
 
-    public List<Map<Long, Integer>> getRequiredBooks() {
+    public Map<Long, Integer> getRequiredBooks() {
         return requiredBooks;
     }
 
-    public void setRequiredBooks(List<Map<Long, Integer>> requiredBooks) {
+    public void setRequiredBooks(Map<Long, Integer> requiredBooks) {
         this.requiredBooks = requiredBooks;
     }
 }

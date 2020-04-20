@@ -23,7 +23,7 @@ public interface UserInfoRepository extends JpaRepository<UserInfo,Long>{
     List<UserInfo> findAll();
 
 
-    List<UserInfo> findByUserame(String username);
+    List<UserInfo> findByUsername(String username);
 
     List<UserInfo> findByCellphone(String cellphone);
 

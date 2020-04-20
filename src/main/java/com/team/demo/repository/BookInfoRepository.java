@@ -24,7 +24,7 @@ public interface BookInfoRepository extends JpaRepository<BookInfo,Long> {
 
     List<BookInfo> findByName(String name);
 
-    @Query("select t from BookInfo where t.author like concat('%',:keyword,'%') or t.name like concat('%',:keyword,'%') or t.category like concat('%',:keyword,'%')")
+    @Query("select t from BookInfo t where t.author like concat('%',:keyword,'%') or t.name like concat('%',:keyword,'%') or t.category like concat('%',:keyword,'%')")
     List<BookInfo> findByKeyword(@Param("keyword")String keyword);
 
     List<BookInfo> findById(long id);

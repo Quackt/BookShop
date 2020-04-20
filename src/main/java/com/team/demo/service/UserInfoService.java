@@ -67,7 +67,7 @@ public class UserInfoService {
         if(userInfoVO.getUserId() != 0) {
             return userInfoRepository.findById(userInfoVO.getUserId());
         }else if(!userInfoVO.getUsername().equals("")){
-            return userInfoRepository.findByUserame(userInfoVO.getUsername());
+            return userInfoRepository.findByUsername(userInfoVO.getUsername());
         }else if(!userInfoVO.getCellphone().equals("")){
             return userInfoRepository.findByCellphone(userInfoVO.getCellphone());
         }else if(!userInfoVO.getEmail().equals("")){

@@ -1,5 +1,6 @@
 package com.team.demo.controller;
 
+import com.team.demo.entity.OrderDetailsInfo;
 import com.team.demo.entity.OrderInfo;
 import com.team.demo.service.OrderInfoService;
 import com.team.demo.vo.OrderInfoVO;
@@ -44,5 +45,10 @@ public class OrderInfoController {
     @DeleteMapping("/delete")
     public void deleteOrders(@RequestParam List<Long> ids){
         orderInfoService.deleteOrders(ids);
+    }
+
+    @PostMapping("/show")
+    public List<OrderDetailsInfo> showOrderDetails(@RequestParam(name="orderId") long orderId){
+        return orderInfoService.showOrderDetails(orderId);
     }
 }

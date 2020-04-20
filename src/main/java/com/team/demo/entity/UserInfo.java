@@ -1,9 +1,6 @@
 package com.team.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Optional;
 
 /**
@@ -15,15 +12,18 @@ import java.util.Optional;
 @Entity
 public class UserInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
 
+    @Column
     private String username;
 
+    @Column
     private String password;
 
+    @Column
     private String cellphone;
 
+    @Column
     private String email;
 
     //无参构造

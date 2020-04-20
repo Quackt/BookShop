@@ -1,9 +1,6 @@
 package com.team.demo.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @program bookshop
@@ -14,15 +11,18 @@ import javax.persistence.Id;
 @Entity
 public class BookInfo {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @Column
     private String name;
 
+    @Column
     private String category;
 
+    @Column
     private double price;
 
+    @Column
     private String author;
 
     //private String image;
@@ -92,13 +92,7 @@ public class BookInfo {
 
     public void setAuthor(String author){ this.author=author; }
 
-    /*public String getImage(){
-        return image;
-    }
 
-    public void setImage(String image){
-        this.image=image;
-    }*/
 
     public String getDescription(){
         return description;

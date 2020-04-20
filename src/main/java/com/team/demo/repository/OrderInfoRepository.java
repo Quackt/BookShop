@@ -18,10 +18,10 @@ import java.util.List;
 @Repository
 public interface OrderInfoRepository extends JpaRepository<OrderInfo,Long> {
     @Modifying
-    @Query("update OrderInfo set t.status =: status")
+    @Query("update OrderInfo t set t.status =: status where t.id =: id")
     void updateStatusById(@Param("id")long id,@Param("status")OrderInfo.Status status);
 
-    @Query("select it from OrderInfo where t.id in (:ids)")
+    @Query("select t from OrderInfo t where t.id in (:ids)")
     List<OrderInfo> findByIds(@Param("ids")List<Long> ids);
 
     @Query("delete from OrderInfo t where t.id in (:ids)")

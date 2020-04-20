@@ -16,7 +16,6 @@ public class OrderInfo {
 
     public static enum Status {FINISHED,CANCLED,UNFINISHED};
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column
@@ -25,9 +24,6 @@ public class OrderInfo {
     @Column
     @Enumerated(EnumType.STRING)
     private Status status;
-
-    @Column
-    private BookInfo book;
 
     @Column
     private double totalprice;
@@ -40,12 +36,11 @@ public class OrderInfo {
 
     }
     //有参构造
-    public OrderInfo(long id,BookInfo book,double totalprice,long userId){
+    public OrderInfo(long id,double totalprice,long userId){
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         this.id=id;
         this.ordertime=df.format(new Date());
         this.status=Status.UNFINISHED;
-        this.book=book;
         this.totalprice=totalprice;
         this.userId=userId;
     }
@@ -74,14 +69,6 @@ public class OrderInfo {
         this.status=status;
     }
 
-    public BookInfo getBook(){
-        return book;
-    }
-
-    public void setBook(BookInfo book){
-        this.book=book;
-    }
-
     public double getPrice(){
         return totalprice;
     }
@@ -96,6 +83,18 @@ public class OrderInfo {
 
     public void setUser(long userId){
         this.userId=userId;
+    }
+
+    public double getTotalprice() {
+        return totalprice;
+    }
+
+    public void setTotalprice(double totalprice) {
+        this.totalprice = totalprice;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     /*public Set<OrderItem> getOrderitems(){
