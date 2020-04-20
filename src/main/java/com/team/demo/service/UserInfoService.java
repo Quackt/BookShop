@@ -23,7 +23,6 @@ import java.util.regex.Pattern;
 public class UserInfoService {
     @Autowired
     UserInfoRepository userInfoRepository;
-    private Object UserInfo;
     private IdGeneratorUtils idGenerator;
 
     /**
@@ -74,6 +73,7 @@ public class UserInfoService {
         }else if(!userInfoVO.getEmail().equals("")){
             return userInfoRepository.findByEmail(userInfoVO.getEmail());
         }
+        return null;
     }
 
     /**
@@ -91,7 +91,7 @@ public class UserInfoService {
     public boolean login(String password, String account) {
         String pattern = "^1[34578]\\d{9}$";
         boolean isMatch = Pattern.matches(pattern, account);
-        List<UserInfo> userInfos = new ArrayList<UserInfo>();
+        List<UserInfo> userInfos;
         if(isMatch){
             userInfos = userInfoRepository.findByCellphone(account);
         }else{
