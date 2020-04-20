@@ -17,7 +17,7 @@ import java.util.List;
  */
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping(value="/books")
 public class BookInfoController {
    @Autowired
