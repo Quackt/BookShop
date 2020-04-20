@@ -49,5 +49,5 @@ public class UserInfoController {
     }
 
     @PostMapping("/login")
-    public boolean login(@RequestBody String password,@RequestParam("account")String account){return userInfoService.login(password,account);}
+    public boolean login(@RequestParam("password") String password,@RequestParam("account")String account){return userInfoService.login(password,account);}
 }
