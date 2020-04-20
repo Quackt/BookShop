@@ -12,6 +12,7 @@ import javax.persistence.*;
  * @date 2020/03/5
  */
 @Entity
+@Table
 public class OrderDetailsInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

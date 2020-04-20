@@ -10,6 +10,7 @@ import java.util.Optional;
  * @date 2020/02/24
  */
 @Entity
+@Table
 public class UserInfo {
     @Id
     private long userId;

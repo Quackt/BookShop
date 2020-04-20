@@ -12,6 +12,7 @@ import java.util.Set;
  * @date 2020/03/5
  */
 @Entity
+@Table
 public class OrderInfo {
 
     public static enum Status {FINISHED,CANCLED,UNFINISHED};

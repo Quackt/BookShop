@@ -9,6 +9,7 @@ import javax.persistence.*;
  * @date 2020/02/24
  */
 @Entity
+@Table
 public class BookInfo {
     @Id
     private long id;
