@@ -16,7 +16,7 @@ import java.util.List;
  * @Date 2020/3/9
  */
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RequestMapping(value="/orders")
 public class OrderInfoController {
     @Autowired
