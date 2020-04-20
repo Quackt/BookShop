@@ -35,7 +35,7 @@ public class OrderInfoService {
      */
     public Long createOrder(OrderInfoVO orderInfoVO) {
         OrderInfo orderInfo=new OrderInfo();
-        orderInfo.setId(idGenerator.snowflakeId());
+        //orderInfo.setId(idGenerator.snowflakeId());
         orderInfo.setUser(orderInfoVO.getUserId());
         orderInfoRepository.save(orderInfo);
         saveDetails(orderInfo.getId(),orderInfoVO.getRequiredBooks());

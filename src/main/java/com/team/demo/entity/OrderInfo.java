@@ -17,6 +17,7 @@ public class OrderInfo {
 
     public static enum Status {FINISHED,CANCLED,UNFINISHED};
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column

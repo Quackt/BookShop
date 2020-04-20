@@ -27,7 +27,7 @@ public class BookInfoService {
      */
     public Long addBook(BookInfoVO bookInfoVO) {
         BookInfo bookInfo=new BookInfo();
-        bookInfo.setId(idGenerator.snowflakeId());
+        //bookInfo.setId(idGenerator.snowflakeId());
         bookInfo.setName(bookInfoVO.getName());
         bookInfo.setCategory(bookInfoVO.getCategory());
         bookInfo.setAuthor(bookInfoVO.getAuthor());

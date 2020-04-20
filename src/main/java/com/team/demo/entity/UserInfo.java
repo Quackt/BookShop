@@ -13,6 +13,7 @@ import java.util.Optional;
 @Table
 public class UserInfo {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long userId;
 
     @Column

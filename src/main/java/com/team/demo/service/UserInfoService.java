@@ -33,7 +33,7 @@ public class UserInfoService {
     public long addUser(UserInfoVO userInfoVO)
     {
         UserInfo user=new UserInfo();
-        user.setId(idGenerator.snowflakeId());
+        //user.setId(idGenerator.snowflakeId());
         user.setUsername(userInfoVO.getUsername());
         user.setPassword(userInfoVO.getPassword());
         user.setCellphone(userInfoVO.getCellphone());
