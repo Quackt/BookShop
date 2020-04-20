@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo,Long>{
-    @Query("delete from user_info t where t.id in :ids")
+    @Query("delete from UserInfo t where t.id in :ids")
     void deleteById(List<Long> ids);
 
     @Override

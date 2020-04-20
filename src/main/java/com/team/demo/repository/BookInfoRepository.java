@@ -15,7 +15,7 @@ import java.util.List;
  */
 @Repository
 public interface BookInfoRepository extends JpaRepository<BookInfo,Long> {
-    @Query("delete from book_info t where t.id in :ids")
+    @Query("delete from BookInfo t where t.id in :ids")
     void deleteByIds(@Param("ids") List<Long> ids);
 
     List<BookInfo> findByAuthor(String author);
@@ -24,7 +24,7 @@ public interface BookInfoRepository extends JpaRepository<BookInfo,Long> {
 
     List<BookInfo> findByName(String name);
 
-    @Query("select t from book_info t where t.author like concat('%',:keyword,'%') or t.name like concat('%',:keyword,'%') or t.category like concat('%',:keyword,'%')")
+    @Query("select t from BookInfo t where t.author like concat('%',:keyword,'%') or t.name like concat('%',:keyword,'%') or t.category like concat('%',:keyword,'%')")
     List<BookInfo> findByKeyword(@Param("keyword")String keyword);
 
     List<BookInfo> findById(long id);
