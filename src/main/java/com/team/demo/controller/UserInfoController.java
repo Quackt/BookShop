@@ -29,8 +29,8 @@ public class UserInfoController {
     }
 
     @PostMapping("/update")
-    public void updateMassege(@RequestBody UserInfoVO userInfoVO){
-        userInfoService.updateMessage(userInfoVO);
+    public void updateMassege(@RequestBody UserInfo userInfo){
+        userInfoService.updateMessage(userInfo);
     }
 
     @DeleteMapping("/delete")
@@ -39,8 +39,8 @@ public class UserInfoController {
     }
 
     @PostMapping("/queryBooks")
-    public List<UserInfo> queryUsers(@RequestParam List<UserInfoVO> userInfos){
-        return userInfoService.queryUsers(userInfos);
+    public List<UserInfo> queryUsers(@RequestParam UserInfoVO userInfo){
+        return userInfoService.queryUsers(userInfo);
     }
 
     @GetMapping("/getAllBooks")

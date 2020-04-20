@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.sql.rowset.BaseRowSet;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * @program bookshop
@@ -31,22 +33,22 @@ public class UserInfoService {
      */
     public long addUser(UserInfoVO userInfoVO)
     {
-        UserInfo auser=new UserInfo();
-        auser.setId(idGenerator.snowflakeId());
-        auser.setUsername(userInfoVO.getUsername());
-        auser.setPassword(userInfoVO.getPassword());
-        auser.setCellphone(userInfoVO.getCellphone());
-        auser.setEmail(userInfoVO.getEmail());
-        userInfoRepository.save(auser);
-        return auser.getId();
+        UserInfo user=new UserInfo();
+        user.setId(idGenerator.snowflakeId());
+        user.setUsername(userInfoVO.getUsername());
+        user.setPassword(userInfoVO.getPassword());
+        user.setCellphone(userInfoVO.getCellphone());
+        user.setEmail(userInfoVO.getEmail());
+        userInfoRepository.save(user);
+        return user.getId();
     }
 
     /**
      * 更新用户信息
-     * @param userInfoVO 用户信息
+     * @param userInfo 用户信息
      */
-    public void updateMessage(UserInfoVO userInfoVO)  {
-        userInfoRepository.saveAndFlush(userInfoVO);
+    public void updateMessage(UserInfo userInfo)  {
+        userInfoRepository.saveAndFlush(userInfo);
     }
 
     /**
@@ -59,12 +61,19 @@ public class UserInfoService {
 
     /**
      * 查询用户信息
-     * @param userInfos 查询条件
+     * @param userInfoVO 查询条件
      * @return List 用户信息表
      */
-    public List<UserInfo> queryUsers(List<UserInfoVO> userInfos) {
-        //我没找到userInfos的get方法，或是我理解不对?
-        return userInfoRepository.findAll(userInfos);
+    public List<UserInfo> queryUsers(UserInfoVO userInfoVO) {
+        if(userInfoVO.getUserId() != 0) {
+            return userInfoRepository.findById(userInfoVO.getUserId());
+        }else if(!userInfoVO.getUsername().equals("")){
+            return userInfoRepository.findByUserame(userInfoVO.getUsername());
+        }else if(!userInfoVO.getCellphone().equals("")){
+            return userInfoRepository.findByCellphone(userInfoVO.getCellphone());
+        }else if(!userInfoVO.getEmail().equals("")){
+            return userInfoRepository.findByEmail(userInfoVO.getEmail());
+        }
     }
 
     /**
@@ -79,12 +88,18 @@ public class UserInfoService {
      * 判断是否登录成功
      * @return boolean 是否成功
      */
-    public boolean login(String password, Long account) {
-        //这里的account我按userId写的，还是说实体类里要添账号这一项？
-        if(!userInfoRepository.findById(account).isPresent()) {
-            return false;
-        } else {
-            return password.equals(userInfoRepository.getOne(account).getPassword());
+    public boolean login(String password, String account) {
+        String pattern = "^1[34578]\\d{9}$";
+        boolean isMatch = Pattern.matches(pattern, account);
+        List<UserInfo> userInfos = new ArrayList<UserInfo>();
+        if(isMatch){
+            userInfos = userInfoRepository.findByCellphone(account);
+        }else{
+            userInfos = userInfoRepository.findByEmail(account);
         }
+        if(userInfos.isEmpty()||!userInfos.get(0).getPassword().equals(password)){
+            return false;
+        }
+        return true;
     }
 }

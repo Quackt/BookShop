@@ -4,6 +4,7 @@ package com.team.demo.repository;
 import com.team.demo.entity.UserInfo;
 import com.team.demo.vo.UserInfoVO;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -15,12 +16,18 @@ import java.util.List;
  */
 @Repository
 public interface UserInfoRepository extends JpaRepository<UserInfo,Long>{
-    void saveAndFlush(UserInfoVO userInfoVO);
-
+    @Query("delete from UserInfo t where t.id in :ids")
     void deleteById(List<Long> ids);
+
     @Override
     List<UserInfo> findAll();
-    List<UserInfo> findAll(List<UserInfoVO> userInfos);
-    List<UserInfo> findById(List<Long> ids);
 
+
+    List<UserInfo> findByUserame(String username);
+
+    List<UserInfo> findByCellphone(String cellphone);
+
+    List<UserInfo> findByEmail(String email);
+
+    List<UserInfo> findById(long id);
 }
